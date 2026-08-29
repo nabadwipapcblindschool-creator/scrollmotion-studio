@@ -283,17 +283,20 @@ function Home() {
             lede="Rules, tracks and judging — so you can focus on building the impossible."
           />
 
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
             {TRACKS.map((t, i) => (
               <div
                 key={t.t}
-                className="rounded-xl border-2 border-border/70 bg-background/55 p-7 backdrop-blur transition-transform hover:-translate-y-1.5 hover:border-accent/60"
+                className="sticker group relative rounded-lg p-7 transition-transform duration-300 hover:-translate-y-2 hover:rotate-0"
                 style={{ transform: `rotate(${(i % 3) - 1}deg)` }}
               >
-                <h3 className="font-display text-2xl uppercase tracking-wide text-accent/90">
+                <span className="absolute -right-2.5 -top-3.5 rotate-6 tape px-2 py-0.5 font-display text-[11px] uppercase tracking-[0.2em]">
+                  Track {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-display text-3xl uppercase tracking-wide text-accent transition-colors group-hover:text-spray-gradient">
                   {t.t}
                 </h3>
-                <p className="mt-2 text-sm text-muted-foreground">{t.d}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.d}</p>
               </div>
             ))}
           </div>
