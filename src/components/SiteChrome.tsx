@@ -250,7 +250,7 @@ export function ChapterHead({
       <span className="inline-block -rotate-2 tape px-3 py-1 font-display text-xs uppercase tracking-[0.28em]">
         {eyebrow}
       </span>
-      <h2 className="mt-5 font-display text-[clamp(2.6rem,7vw,5rem)] leading-[0.92] uppercase text-spray-gradient spray-shadow">
+      <h2 className="mt-5 inline-block font-display text-[clamp(2.6rem,7vw,5rem)] leading-[0.92] uppercase text-spray-gradient spray-shadow squiggle-underline">
         {title}
       </h2>
       {lede ? <p className="mt-4 max-w-xl text-foreground/75">{lede}</p> : null}

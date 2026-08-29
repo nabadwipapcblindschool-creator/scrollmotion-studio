@@ -212,7 +212,7 @@ function Home() {
         </section>
 
         <Section className="mx-auto max-w-6xl px-6 py-24">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="halftone relative grid gap-4 rounded-2xl p-4 sm:grid-cols-2 lg:grid-cols-4">
             {STATS.map((s, i) => (
               <div
                 key={s.k}
@@ -283,17 +283,20 @@ function Home() {
             lede="Rules, tracks and judging — so you can focus on building the impossible."
           />
 
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
             {TRACKS.map((t, i) => (
               <div
                 key={t.t}
-                className="rounded-xl border-2 border-border/70 bg-background/55 p-7 backdrop-blur transition-transform hover:-translate-y-1.5 hover:border-accent/60"
+                className="sticker group relative rounded-lg p-7 transition-transform duration-300 hover:-translate-y-2 hover:rotate-0"
                 style={{ transform: `rotate(${(i % 3) - 1}deg)` }}
               >
-                <h3 className="font-display text-2xl uppercase tracking-wide text-accent/90">
+                <span className="absolute -right-2.5 -top-3.5 rotate-6 tape px-2 py-0.5 font-display text-[11px] uppercase tracking-[0.2em]">
+                  Track {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-display text-3xl uppercase tracking-wide text-accent transition-colors group-hover:text-spray-gradient">
                   {t.t}
                 </h3>
-                <p className="mt-2 text-sm text-muted-foreground">{t.d}</p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{t.d}</p>
               </div>
             ))}
           </div>
@@ -303,8 +306,11 @@ function Home() {
               <h3 className="font-tag text-3xl text-spray-gradient">The rules of the realm</h3>
               <ol className="mt-8 space-y-5">
                 {RULES.map((r, i) => (
-                  <li key={r} className="flex gap-5">
-                    <span className="font-display text-2xl text-accent/70">
+                  <li key={r} className="group flex items-start gap-5">
+                    <span
+                      className="mt-0.5 grid size-10 shrink-0 -rotate-3 place-items-center rounded-md font-display text-base text-primary-foreground transition-transform group-hover:rotate-0 group-hover:scale-110"
+                      style={{ background: "var(--gradient-ember)", boxShadow: "var(--shadow-ember)" }}
+                    >
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <p className="text-foreground/80">{r}</p>
