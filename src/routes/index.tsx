@@ -212,7 +212,7 @@ function Home() {
         </section>
 
         <Section className="mx-auto max-w-6xl px-6 py-24">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="halftone relative grid gap-4 rounded-2xl p-4 sm:grid-cols-2 lg:grid-cols-4">
             {STATS.map((s, i) => (
               <div
                 key={s.k}
@@ -306,8 +306,11 @@ function Home() {
               <h3 className="font-tag text-3xl text-spray-gradient">The rules of the realm</h3>
               <ol className="mt-8 space-y-5">
                 {RULES.map((r, i) => (
-                  <li key={r} className="flex gap-5">
-                    <span className="font-display text-2xl text-accent/70">
+                  <li key={r} className="group flex items-start gap-5">
+                    <span
+                      className="mt-0.5 grid size-10 shrink-0 -rotate-3 place-items-center rounded-md font-display text-base text-primary-foreground transition-transform group-hover:rotate-0 group-hover:scale-110"
+                      style={{ background: "var(--gradient-ember)", boxShadow: "var(--shadow-ember)" }}
+                    >
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <p className="text-foreground/80">{r}</p>
