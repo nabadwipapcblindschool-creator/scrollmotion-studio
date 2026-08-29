@@ -40,9 +40,12 @@
   --color-ember: var(--ember);
   --color-gold: var(--gold);
   --color-mystic: var(--mystic);
-  --font-display: "Cinzel Decorative", "Cinzel", serif;
-  --font-serif: "Cinzel", serif;
-  --font-sans: "Jost", ui-sans-serif, system-ui, sans-serif;
+  --color-toxic: var(--toxic);
+  --color-electric: var(--electric);
+  --font-display: "Bebas Neue", "Anton", sans-serif;
+  --font-tag: "Permanent Marker", cursive;
+  --font-serif: "Archivo Black", sans-serif;
+  --font-sans: "Rubik", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
@@ -70,6 +73,8 @@
   --ember: oklch(0.66 0.2 38);
   --gold: oklch(0.82 0.14 82);
   --mystic: oklch(0.52 0.16 300);
+  --toxic: oklch(0.85 0.22 135);
+  --electric: oklch(0.75 0.19 210);
 
   --gradient-sigil: conic-gradient(
     from 0deg,
@@ -80,6 +85,7 @@
     transparent 280deg
   );
   --gradient-ember: linear-gradient(100deg, var(--primary), var(--ember) 55%, var(--gold));
+  --gradient-spray: linear-gradient(115deg, var(--toxic), var(--gold) 40%, var(--ember) 70%, var(--mystic));
   --gradient-veil: linear-gradient(
     180deg,
     oklch(0.08 0.015 25 / 0.9) 0%,
@@ -192,4 +198,80 @@
 }
 @utility animate-flicker {
   animation: flicker 4.5s ease-in-out infinite;
+}
+
+
+@utility font-tag {
+  font-family: var(--font-tag);
+}
+
+@utility text-spray-gradient {
+  background: var(--gradient-spray);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* rough concrete-wall grain the paint sits on */
+@utility concrete {
+  background-image:
+    radial-gradient(circle at 20% 30%, oklch(1 0 0 / 0.04) 0 1px, transparent 1px),
+    radial-gradient(circle at 70% 60%, oklch(1 0 0 / 0.035) 0 1px, transparent 1px),
+    radial-gradient(circle at 45% 85%, oklch(0 0 0 / 0.35) 0 2px, transparent 2px);
+  background-size: 7px 7px, 11px 11px, 19px 19px;
+}
+
+/* hard stencil outline used on big display type */
+@utility stencil {
+  -webkit-text-stroke: 2px color-mix(in oklab, var(--gold) 75%, transparent);
+  color: transparent;
+  text-shadow: 6px 6px 0 color-mix(in oklab, var(--primary) 55%, transparent);
+}
+
+@utility spray-shadow {
+  text-shadow:
+    0 0 24px color-mix(in oklab, var(--ember) 70%, transparent),
+    4px 5px 0 color-mix(in oklab, oklch(0 0 0) 70%, transparent);
+}
+
+/* torn sticker / paste-up card */
+@utility pasteup {
+  background: linear-gradient(150deg, oklch(0.15 0.026 25 / 0.86), oklch(0.1 0.014 25 / 0.74));
+  border: 1px solid color-mix(in oklab, var(--gold) 26%, transparent);
+  box-shadow:
+    8px 8px 0 -2px color-mix(in oklab, var(--primary) 45%, transparent),
+    0 20px 60px -22px oklch(0 0 0 / 0.9);
+  backdrop-filter: blur(10px);
+}
+
+/* strip of masking tape */
+@utility tape {
+  background: color-mix(in oklab, var(--gold) 82%, transparent);
+  color: oklch(0.15 0.02 30);
+  box-shadow: 0 6px 18px -8px oklch(0 0 0 / 0.8);
+}
+
+@utility marker-underline {
+  background-image: linear-gradient(
+    to top,
+    color-mix(in oklab, var(--ember) 55%, transparent) 0 34%,
+    transparent 34%
+  );
+}
+
+@utility drip-border {
+  border-bottom: 3px solid color-mix(in oklab, var(--toxic) 60%, transparent);
+}
+
+@keyframes tag-wobble {
+  0%,
+  100% {
+    transform: rotate(-2.2deg);
+  }
+  50% {
+    transform: rotate(1.6deg);
+  }
+}
+@utility animate-tag-wobble {
+  animation: tag-wobble 6s ease-in-out infinite;
 }
